@@ -27,6 +27,10 @@ public class Venda {
         return data;
     }
 
+    public Cliente getCliente(){
+        return this.getPedido().getCliente();
+    }
+
     public void setData(String data) {
         this.data = data;
     }

@@ -3,6 +3,8 @@ package com.uefs.sigsorveterias.model;
 public class Produto {
 
     private String nome;
+
+    private String descricao;
     private Double preco;
     private Integer quantidade;
 
@@ -38,7 +40,10 @@ public class Produto {
 
     @Override
     public String toString() {
-        return nome + '\'' +
-                ", preco=" + preco;
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }

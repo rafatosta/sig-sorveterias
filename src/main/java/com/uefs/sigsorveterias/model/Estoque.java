@@ -1,31 +1,35 @@
 package com.uefs.sigsorveterias.model;
 
+import com.uefs.sigsorveterias.dao.DAO;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estoque {
 
-    private List<Produto> estoque;
-
     public Estoque() {
-        this.estoque = new ArrayList();
+
     }
 
     /**
      * Cria e armazena um novo produto no estoque
-     * Qual o problema de implementar a composição dessa forma?
      *
      * @param nome       Nome do produto
      * @param preco
      * @param quantidade
      * @return Novo produto
      */
-    public Produto novoProduto(String nome, Double preco, Integer quantidade) {
-        return new Produto(nome, preco, quantidade);
+    public Produto novoProduto(Produto novoProduto) {
+        Produto produto = DAO.getProdutoDAO().create(novoProduto);
+        return produto;
+    }
+
+    public void removeProduto(Produto produto) {
+        DAO.getProdutoDAO().delete(produto);
     }
 
     public List<Produto> getProdutos() {
-        return this.estoque;
+        return DAO.getProdutoDAO().read();
     }
 
     public Produto getProduto() {
@@ -39,4 +43,18 @@ public class Estoque {
                 "estoque=" + estoque +
                 '}';
     }
+
+    public static void main(String[] args) {
+        Estoque e = new Estoque();
+
+        Produto picolé = e.novoProduto(new Produto("Picolé", 10.50, 20));
+        e.novoProduto(new Produto("Picolé 2", 10.50, 20));
+        e.novoProduto(new Produto("Picolé 3", 10.50, 20));
+        e.novoProduto(new Produto("Picolé 4", 10.50, 20));
+        System.out.println(e);
+
+
+    }
+
+
 }

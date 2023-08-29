@@ -1,5 +1,6 @@
 package com.uefs.sigsorveterias;
 
+import com.uefs.sigsorveterias.dao.DAO;
 import com.uefs.sigsorveterias.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,27 +21,8 @@ public class HelloApplication /*extends Application*/ {
 
     public static void main(String[] args) {
         //launch();
-        Cliente c = new Cliente("Rafael", "12345");
-        Funcionario f = new Funcionario("João", "jj123", "0000");
-
-        Produto prod = new Produto("Sorvete de Chocolate", 10.00, 100);
-        Produto prod2 = new Produto("Picolé de morango", 5.00, 50);
-
-        Pedido p = new Pedido(c);
-        ItemPedido ip1 = new ItemPedido(prod, 2);
-        ItemPedido ip2 = new ItemPedido(prod2, 5);
-
-        p.addItem(ip1);
-        p.addItem(ip2);
-
-        System.out.println(p);
-
-        p.removerItem(ip2);
-        System.out.println(p);
-
-        Venda newVenda = new Venda(p, "29/08/2023", f);
-        System.out.println(newVenda);
-
+        DAO.getClienteDAO().create(new Cliente("A",'123'));
+        DAO.getClienteDAO().create(new Cliente("B",'789'));
 
     }
 }
