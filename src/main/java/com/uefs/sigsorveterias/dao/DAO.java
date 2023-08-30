@@ -2,6 +2,8 @@ package com.uefs.sigsorveterias.dao;
 
 import com.uefs.sigsorveterias.dao.cliente.ClienteDAO;
 import com.uefs.sigsorveterias.dao.cliente.ClienteDAOList;
+import com.uefs.sigsorveterias.dao.estoque.EstoqueDAO;
+import com.uefs.sigsorveterias.dao.estoque.EstoqueDAOList;
 import com.uefs.sigsorveterias.dao.funcionario.FuncionarioDAO;
 import com.uefs.sigsorveterias.dao.funcionario.FuncionarioDAOList;
 import com.uefs.sigsorveterias.dao.produto.ProdutoDAO;
@@ -11,8 +13,8 @@ public class DAO {
 
     private static ClienteDAO clienteDAO;
     private static FuncionarioDAO funcionarioDAO;
-
     private static ProdutoDAO produtoDAO;
+    private static EstoqueDAO estoqueDAO;
 
     public static ClienteDAO getClienteDAO() {
         if (clienteDAO == null) {
@@ -33,5 +35,12 @@ public class DAO {
             produtoDAO = new ProdutoDAOList();
         }
         return produtoDAO;
+    }
+
+    public static EstoqueDAO getEstoqueDAO() {
+        if (estoqueDAO == null) {
+            estoqueDAO = new EstoqueDAOList();
+        }
+        return estoqueDAO;
     }
 }
