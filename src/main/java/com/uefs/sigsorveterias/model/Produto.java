@@ -1,5 +1,7 @@
 package com.uefs.sigsorveterias.model;
 
+import com.uefs.sigsorveterias.dao.DAO;
+
 public class Produto {
 
     /**
@@ -22,10 +24,22 @@ public class Produto {
      */
     private Integer quantidade;
 
+    /**
+     * Id do estoque ao qual o produto está relacionado
+     */
+    private int idEstoque;
+
     public Produto(String nome, Double preco, Integer quantidade) {
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+    }
+
+    public Produto(String nome, Double preco, Integer quantidade, Estoque estoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.idEstoque = estoque.getId();
     }
 
     public int getId() {
@@ -58,6 +72,14 @@ public class Produto {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public int getEstoque() {
+        return DAO.getEstoqueDAO().findById(this.idEstoque);
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.idEstoque = estoque.getId();
     }
 
     @Override

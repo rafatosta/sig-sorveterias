@@ -46,7 +46,6 @@ public class Estoque {
         this.id = id;
     }
 
-
     /**
      * Cria e armazena um novo produto no estoque
      *
@@ -54,8 +53,12 @@ public class Estoque {
      * @return
      */
     public Produto novoProduto(Produto novoProduto) {
-        Produto produto = DAO.getProdutoDAO().create(novoProduto);
-        return produto;
+        /**
+         * Ao adicionar um novo produto, é preciso definir a qual estoque ele faz parte.
+         * Ou seja, ao próprio estoque.
+         */
+        novoProduto.setEstoque(this);
+        return DAO.getProdutoDAO().create(novoProduto);
     }
 
     /**
@@ -65,6 +68,13 @@ public class Estoque {
      */
     public void removeProduto(Produto produto) {
         DAO.getProdutoDAO().delete(produto);
+    }
+
+    /**
+     * Remove todos os produtos
+     */
+    public void removeProdutos() {
+        DAO.getProdutoDAO().deleteMany(this);
     }
 
     /**
@@ -82,17 +92,17 @@ public class Estoque {
      * @return Lista de produtos
      */
     public List<Produto> getProdutos() {
-        return DAO.getProdutoDAO().findMany();
+        return DAO.getProdutoDAO().findManyByEstoque(this);
     }
 
     /**
-     * Busca um produto por seu ID
+     * Busca um produto por seu ID no seu estoque
      *
      * @param idProduto
      * @return
      */
     public Produto getProduto(int idProduto) {
-        return DAO.getProdutoDAO().findById(idProduto);
+        return DAO.getProdutoDAO().findById(idProduto, this);
     }
 
     /**
