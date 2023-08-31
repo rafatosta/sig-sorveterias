@@ -21,8 +21,26 @@ public class HelloApplication /*extends Application*/ {
 
     public static void main(String[] args) {
         //launch();
-        DAO.getClienteDAO().create(new Cliente("A",'123'));
-        DAO.getClienteDAO().create(new Cliente("B",'789'));
+        DAO.getClienteDAO().create(new Cliente("A", "123"));
+        DAO.getClienteDAO().create(new Cliente("B", "456"));
+        Cliente cliente = DAO.getClienteDAO().create(new Cliente("C", "789"));
+        DAO.getClienteDAO().create(new Cliente("D", "741"));
 
+        System.out.println(DAO.getClienteDAO().findMany());
+
+        System.out.println(cliente);
+        cliente.setNome("Rafael Tosta");
+        DAO.getClienteDAO().update(cliente);
+
+        System.out.println(DAO.getClienteDAO().findMany());
+
+        System.out.println(DAO.getClienteDAO().findById(4));
+        System.out.println(DAO.getClienteDAO().findById(1));
+
+        DAO.getClienteDAO().delete(new Cliente("D", "741"));
+
+        System.out.println(DAO.getClienteDAO().findMany());
+
+        System.out.println(DAO.getClienteDAO().findById(1));
     }
 }
