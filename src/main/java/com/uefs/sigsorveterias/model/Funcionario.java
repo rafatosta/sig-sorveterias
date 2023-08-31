@@ -1,6 +1,10 @@
 package com.uefs.sigsorveterias.model;
 
+import java.util.Objects;
+
 public class Funcionario {
+    private int id;
+
     private String nome;
     private String login;
     private String senha;
@@ -9,6 +13,22 @@ public class Funcionario {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.id = -1;
+    }
+
+    public Funcionario(int id, String nome, String login, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -40,5 +60,18 @@ public class Funcionario {
         return "Funcionario{" +
                 "nome='" + nome + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Funcionario that = (Funcionario) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
