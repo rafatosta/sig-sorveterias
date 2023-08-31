@@ -5,5 +5,4 @@ import com.uefs.sigsorveterias.model.Cliente;
 
 public interface ClienteDAO extends CRUD<Cliente> {
 
-    public Cliente getCliente(int id);
 }
