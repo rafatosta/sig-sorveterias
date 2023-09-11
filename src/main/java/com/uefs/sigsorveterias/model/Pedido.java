@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Pedido {
 
+    private int id;
+
     private List<ItemPedido> itemPedidoList;
 
     private Cliente cliente;
@@ -12,6 +14,22 @@ public class Pedido {
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
         this.itemPedidoList = new ArrayList();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<ItemPedido> getItemPedidoList() {
+        return itemPedidoList;
+    }
+
+    public void setItemPedidoList(List<ItemPedido> itemPedidoList) {
+        this.itemPedidoList = itemPedidoList;
     }
 
     public void addItem(ItemPedido item) {
