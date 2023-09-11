@@ -2,6 +2,8 @@ package com.uefs.sigsorveterias.model;
 
 public class Venda {
 
+    private int id;
+
     private Pedido pedido;
 
     private String data;
@@ -13,6 +15,14 @@ public class Venda {
         this.pedido = pedido;
         this.data = data;
         this.funcionario = funcionario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Pedido getPedido() {
