@@ -2,12 +2,21 @@ package com.uefs.sigsorveterias.model;
 
 public class ItemPedido {
 
+    private int id;
     private Produto produto;
     private Integer quantidade;
 
     public ItemPedido(Produto produto, Integer quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
