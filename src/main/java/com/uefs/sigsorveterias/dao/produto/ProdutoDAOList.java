@@ -1,5 +1,6 @@
 package com.uefs.sigsorveterias.dao.produto;
 
+import com.uefs.sigsorveterias.model.ItemPedido;
 import com.uefs.sigsorveterias.model.Produto;
 import com.uefs.sigsorveterias.model.Estoque;
 import com.uefs.sigsorveterias.model.Produto;
@@ -90,7 +91,10 @@ public class ProdutoDAOList implements ProdutoDAO {
 
     @Override
     public void deleteMany(Estoque estoque) {
-        this.lista = new ArrayList<>();
-        this.proximoID = 0;
+        for (Produto p : this.lista) {
+            if (p.getEstoque().equals(estoque)) {
+                this.lista.remove(p);
+            }
+        }
     }
 }
