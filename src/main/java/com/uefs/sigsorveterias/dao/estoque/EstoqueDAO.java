@@ -5,7 +5,7 @@ import com.uefs.sigsorveterias.model.Estoque;
 
 import java.util.List;
 
-public interface EstoqueDAO extends CRUD<Estoque> {
+public interface EstoqueDAO extends CRUD<Estoque, Exception> {
 
 
 }

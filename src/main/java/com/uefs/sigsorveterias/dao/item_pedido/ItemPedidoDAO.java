@@ -8,7 +8,7 @@ import com.uefs.sigsorveterias.model.Produto;
 
 import java.util.List;
 
-public interface ItemPedidoDAO extends CRUD<ItemPedido> {
+public interface ItemPedidoDAO extends CRUD<ItemPedido, Exception> {
 
     /**
      * Retorna todos os itens de um produto

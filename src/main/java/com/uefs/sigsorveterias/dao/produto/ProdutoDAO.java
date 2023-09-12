@@ -6,7 +6,7 @@ import com.uefs.sigsorveterias.model.Produto;
 
 import java.util.List;
 
-public interface ProdutoDAO extends CRUD<Produto> {
+public interface ProdutoDAO extends CRUD<Produto, Exception> {
 
     /**
      * Retorna todos os produtos de estoque específico
