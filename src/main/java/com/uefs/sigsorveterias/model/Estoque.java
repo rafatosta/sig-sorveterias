@@ -66,14 +66,14 @@ public class Estoque {
      *
      * @param produto
      */
-    public void removeProduto(Produto produto) {
+    public void removeProduto(Produto produto) throws Exception {
         DAO.getProdutoDAO().delete(produto);
     }
 
     /**
      * Remove todos os produtos
      */
-    public void removeProdutos() {
+    public void removeProdutos() throws Exception {
         DAO.getProdutoDAO().deleteMany(this);
     }
 
@@ -82,7 +82,7 @@ public class Estoque {
      *
      * @param produto
      */
-    public void updateProduto(Produto produto) {
+    public void updateProduto(Produto produto) throws Exception {
         DAO.getProdutoDAO().update(produto);
     }
 
@@ -91,7 +91,7 @@ public class Estoque {
      *
      * @return Lista de produtos
      */
-    public List<Produto> getProdutos() {
+    public List<Produto> getProdutos() throws Exception{
         return DAO.getProdutoDAO().findManyByEstoque(this);
     }
 
@@ -101,7 +101,7 @@ public class Estoque {
      * @param idProduto
      * @return
      */
-    public Produto getProduto(int idProduto) {
+    public Produto getProduto(int idProduto) throws Exception{
         return DAO.getProdutoDAO().findById(idProduto, this);
     }
 
@@ -110,7 +110,7 @@ public class Estoque {
      *
      * @return
      */
-    public List<Produto> getAlertaProdutos() {
+    public List<Produto> getAlertaProdutos() throws Exception{
         List<Produto> listaAlerta = new ArrayList<>();
 
         for (Produto produto : this.getProdutos()) {
@@ -123,6 +123,10 @@ public class Estoque {
 
     @Override
     public String toString() {
-        return "Estoque{" + "estoque=" + getProdutos() + '}';
+        try {
+            return "Estoque{" + "estoque=" + getProdutos() + '}';
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

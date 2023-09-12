@@ -74,7 +74,7 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public Estoque getEstoque() {
+    public Estoque getEstoque() throws Exception {
         return DAO.getEstoqueDAO().findById(this.idEstoque);
     }
 

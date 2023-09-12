@@ -14,7 +14,7 @@ public interface ProdutoDAO extends CRUD<Produto, Exception> {
      * @param estoque
      * @return
      */
-    public List<Produto> findManyByEstoque(Estoque estoque);
+    public List<Produto> findManyByEstoque(Estoque estoque) throws Exception;
 
     /**
      * Retorna um produto de um estoque específico
@@ -23,7 +23,7 @@ public interface ProdutoDAO extends CRUD<Produto, Exception> {
      * @param estoque
      * @return
      */
-    public Produto findById(int idProduto, Estoque estoque);
+    public Produto findById(int idProduto, Estoque estoque) throws Exception;
 
 
     /**
@@ -31,5 +31,5 @@ public interface ProdutoDAO extends CRUD<Produto, Exception> {
      *
      * @param estoque
      */
-    public void deleteMany(Estoque estoque);
+    public void deleteMany(Estoque estoque) throws Exception;
 }

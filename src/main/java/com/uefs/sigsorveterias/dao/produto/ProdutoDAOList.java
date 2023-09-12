@@ -69,7 +69,7 @@ public class ProdutoDAOList implements ProdutoDAO {
     }
 
     @Override
-    public List<Produto> findManyByEstoque(Estoque estoque) {
+    public List<Produto> findManyByEstoque(Estoque estoque) throws Exception {
         List<Produto> pEstoque = new ArrayList<>();
         for (Produto p : this.lista) {
             if (p.getEstoque().equals(estoque)) {
@@ -80,7 +80,7 @@ public class ProdutoDAOList implements ProdutoDAO {
     }
 
     @Override
-    public Produto findById(int idProduto, Estoque estoque) {
+    public Produto findById(int idProduto, Estoque estoque) throws Exception{
         for (Produto p : this.lista) {
             if (p.getId() == idProduto && p.getEstoque().equals(estoque)) {
                 return p;
@@ -90,7 +90,7 @@ public class ProdutoDAOList implements ProdutoDAO {
     }
 
     @Override
-    public void deleteMany(Estoque estoque) {
+    public void deleteMany(Estoque estoque) throws Exception{
         for (Produto p : this.lista) {
             if (p.getEstoque().equals(estoque)) {
                 this.lista.remove(p);

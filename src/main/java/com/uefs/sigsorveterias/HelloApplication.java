@@ -19,7 +19,7 @@ public class HelloApplication /*extends Application*/ {
         stage.show();
     }*/
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         //launch();
         DAO.getClienteDAO().create(new Cliente("A", "123"));
         DAO.getClienteDAO().create(new Cliente("B", "456"));
