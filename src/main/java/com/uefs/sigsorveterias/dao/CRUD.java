@@ -4,7 +4,7 @@ import com.uefs.sigsorveterias.model.Cliente;
 
 import java.util.List;
 
-public interface CRUD<T> {
+public interface CRUD<T, E extends Exception> {
 
     /**
      * Cria novo objeto
@@ -20,7 +20,7 @@ public interface CRUD<T> {
      * @param obj
      * @return
      */
-    public void delete(T obj);
+    public void delete(T obj) throws E;
 
     /**
      * Detela todos os dados
@@ -33,7 +33,7 @@ public interface CRUD<T> {
      * @param obj
      * @return
      */
-    public T update(T obj);
+    public T update(T obj) throws E;
 
     /**
      * Ler toda a lista de dados
@@ -48,6 +48,6 @@ public interface CRUD<T> {
      * @param id
      * @return
      */
-    public T findById(int id);
+    public T findById(int id) throws E;
 
 }
