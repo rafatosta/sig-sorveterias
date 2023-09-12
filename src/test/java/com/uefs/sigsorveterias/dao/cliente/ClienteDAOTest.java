@@ -1,6 +1,7 @@
 package com.uefs.sigsorveterias.dao.cliente;
 
 import com.uefs.sigsorveterias.dao.DAO;
+import com.uefs.sigsorveterias.exceptions.ClienteException;
 import com.uefs.sigsorveterias.model.Cliente;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,10 +42,21 @@ class ClienteDAOTest {
     }
 
     @Test
-    void delete() {
+    void delete() throws ClienteException {
         DAO.getClienteDAO().delete(junior);
         int tamanho_esperado = 2;
         assertEquals(tamanho_esperado, DAO.getClienteDAO().findMany().size());
+    }
+
+    @Test
+    void failDelete() {
+        try {
+            DAO.getClienteDAO().delete(new Cliente(5, "Fulano", "00000"));
+            fail("Uma exceção deveria ser gerada!!");
+        } catch (ClienteException e) {
+            assertEquals(ClienteException.DELETE, e.getMessage());
+        }
+
     }
 
     @Test
@@ -54,7 +66,7 @@ class ClienteDAOTest {
     }
 
     @Test
-    void update() {
+    void update() throws ClienteException {
         maria.setNome("Maria da Silva");
         maria.setCpf("111222334456");
         Cliente atual = DAO.getClienteDAO().update(maria);
@@ -68,7 +80,7 @@ class ClienteDAOTest {
     }
 
     @Test
-    void findById() {
+    void findById() throws Exception {
         Cliente esperado = new Cliente(1, "Junior", "789456");
         Cliente atual = DAO.getClienteDAO().findById(1);
         assertEquals(esperado, atual);
