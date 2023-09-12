@@ -1,6 +1,7 @@
 package com.uefs.sigsorveterias.dao.cliente;
 
 import com.uefs.sigsorveterias.dao.DAO;
+import com.uefs.sigsorveterias.exceptions.ClienteException;
 import com.uefs.sigsorveterias.model.Cliente;
 
 import java.util.ArrayList;
@@ -38,8 +39,11 @@ public class ClienteDAOList implements ClienteDAO {
     }
 
     @Override
-    public void delete(Cliente obj) {
-        this.lista.remove(obj);
+    public void delete(Cliente obj) throws ClienteException {
+        boolean remove = this.lista.remove(obj);
+        if (!remove) {
+            throw new ClienteException(ClienteException.DELETE, obj);
+        }
     }
 
     @Override
